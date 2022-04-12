@@ -1,0 +1,16 @@
+version: "4.7"
+services:
+  mongo:
+    image: mongo:4.4
+    container_name: mongo
+    hostname: mongo
+    restart: unless-stoped
+    ports:
+      - 27020:27020
+      command: --smallfiles
+      api:
+        image: api-docker-image
+        ports:
+          - 8081:8081
+        links:
+          - api-database
